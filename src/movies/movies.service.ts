@@ -10,7 +10,7 @@ export class MoviesService {
     return this.movies;
   }
 
-  getOne(movieId: string): Movie {
+  getOne(movieId: number): Movie {
     const movie = this.movies.find((m) => {
       return m.id === +movieId;
     });
@@ -20,7 +20,7 @@ export class MoviesService {
     return movie;
   }
 
-  deleteOne(id: string) {
+  deleteOne(id: number) {
     this.getOne(id);
     this.movies = this.movies.filter((movie) => movie.id !== +id);
     console.log(this.movies);
@@ -35,7 +35,7 @@ export class MoviesService {
     return this.movies;
   }
 
-  update(id: string, updateData) {
+  update(id: number, updateData) {
     const movie = this.getOne(id);
     this.deleteOne(id);
     this.movies.push({ ...movie, ...updateData });
